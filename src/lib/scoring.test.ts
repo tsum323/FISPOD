@@ -160,6 +160,16 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(50, 210, {kind:'contract',sex:'male',specialization:'mountain'})?.points).toBe(100);
     expect(calculateExerciseScore(51, 237, male)?.points).toBe(100);
     expect(calculateExerciseScore(52, 184, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
+    expect(calculateExerciseScore(54, 3, male)?.points).toBe(100);
+    expect(calculateExerciseScore(54, 2, male)?.points).toBe(70);
+    expect(calculateExerciseScore(54, 0, male)).toBeNull();
+    expect(calculateExerciseScore(55, 1, male)?.points).toBe(40);
+    expect(calculateExerciseScore(56, 75, male)?.points).toBe(100);
+    expect(calculateExerciseScore(56, 105, male)?.points).toBe(10);
+    expect(calculateExerciseScore(57, 140, male)?.points).toBe(100);
+    expect(calculateExerciseScore(57, 230, male)?.points).toBe(10);
+    expect(calculateExerciseScore(58, 40, male)?.points).toBe(100);
+    expect(calculateExerciseScore(58, 12, male)?.points).toBe(8);
     expect(calculateExerciseScore(39, 15.0, male)?.points).toBe(100);
     expect(calculateExerciseScore(39, 22.0, male)?.points).toBe(12);
     expect(calculateExerciseScore(39, 22.1, male)).toBeNull();
