@@ -13,5 +13,7 @@ describe('verified exercise technique cards',()=>{it('contains checked descripti
   expect(verifiedExerciseDetails[23].execution.join(' ')).toContain('400 м');
   expect(verifiedExerciseDetails[24].execution.join(' ')).toContain('1 км');
   expect(verifiedExerciseDetails[25].execution.join(' ')).toContain('3 км');
-  expect(verifiedExerciseDetails[26].execution.join(' ')).toContain('5 км');\n  expect(verifiedExerciseDetails[27].rules.join(' ')).toContain('лыжах');\n  expect(verifiedExerciseDetails[28].execution.join(' ')).toContain('500 м');
+  expect(verifiedExerciseDetails[26].execution.join(' ')).toContain('5 км');
+  expect(verifiedExerciseDetails[27].rules.join(' ')).toContain('лыжах');
+  expect(verifiedExerciseDetails[28].execution.join(' ')).toContain('500 м');
 });it('links shuttle-run technique to its exact source page',()=>expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d'));});
