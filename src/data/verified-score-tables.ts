@@ -16,4 +16,7 @@ export const verifiedExerciseScores: Record<number, readonly (readonly [number,n
 // The official table advances in 5-second increments from 03:00 (100 points) to 10:50 (6 points).
 const exercise13: readonly (readonly [number, number])[] = Array.from({ length: 95 }, (_, index) => [180 + index * 5, 100 - index] as const);
 verifiedExerciseScores[13] = exercise13;
-verifiedExerciseScores[33] = [[1,40],[2,70],[3,100]];\nverifiedExerciseScores[34] = [[1,40],[2,70],[3,100]];\nverifiedExerciseScores[35] = [[1,40],[2,70],[3,100]];\nexport const scoringSource = 'Приложение № 5, таблицы перевода результата выполнения упражнений № 1–9 и № 13 в баллы; редакция приказа № 230 от 08.12.2025.';
+verifiedExerciseScores[33] = [[1,40],[2,70],[3,100]];
+verifiedExerciseScores[34] = [[1,40],[2,70],[3,100]];
+verifiedExerciseScores[35] = [[1,40],[2,70],[3,100]];
+export const scoringSource = 'Приложение № 5, таблицы перевода результата выполнения упражнений № 1–9 и № 13 в баллы; редакция приказа № 230 от 08.12.2025.';
