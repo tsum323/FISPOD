@@ -25,7 +25,8 @@ function thresholds(profile:ServiceProfile){
  if(age<45)return {five:50,four:30,three:24};
  if(age<50)return {five:40,four:25,three:18};
  if(age<55)return {five:30,four:20,three:14};
- if(age<=60)return {five:20,four:16,three:12};
+ if(age<60)return {five:20,four:16,three:12};
+ if(age===60)throw new Error('В приложении № 12 пересекаются возрастные интервалы 55–60 и 60 лет и старше. Требуется ручная проверка категории для 60 лет.');
  return {five:15,four:12,three:10};
 }
 export function calculateExerciseScore(exerciseNumber:number,result:number,profile:ServiceProfile):ScoreResult|null{
