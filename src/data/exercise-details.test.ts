@@ -42,7 +42,7 @@ describe('verified exercise technique cards',()=>{
     expect(verifiedExerciseDetails[36].rules.join(' ')).toContain('15 × 28 м');
     expect(verifiedExerciseDetails[37].rules.join(' ')).toContain('20 × 40 м');
     expect(verifiedExerciseDetails[38].rules.join(' ')).toContain('2,43 м');
-    expect(verifiedExerciseDetails[38].execution.join(' ')).toContain('зону № 4');
+    expect(verifiedExerciseDetails[38].execution.join(' ')).toContain('зоны № 4');
   });
   it('records special exercise equipment and execution requirements',()=>{
     expect(verifiedExerciseDetails[39].equipment.join(' ')).toContain('30 кг');
