@@ -177,7 +177,12 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(43, 2041, male)).toBeNull();
     expect(calculateExerciseScore(44, 1610, male)?.points).toBe(100);
     expect(calculateExerciseScore(44, 2520, male)?.points).toBe(8);
-    expect(calculateExerciseScore(44, 2521, male)).toBeNull();\n    expect(calculateExerciseScore(45, 110, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(45, 120, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(45, 136, { ...male, age: 34 })?.points).toBe(73);\n    expect(calculateExerciseScore(45, 161, { ...male, age: 34 })?.points).toBe(8);\n    expect(calculateExerciseScore(45, 162, { ...male, age: 34 })).toBeNull();
+    expect(calculateExerciseScore(44, 2521, male)).toBeNull();
+    expect(calculateExerciseScore(45, 110, { ...male, age: 34 })?.points).toBe(100);
+    expect(calculateExerciseScore(45, 120, { ...male, age: 35 })?.points).toBe(100);
+    expect(calculateExerciseScore(45, 136, { ...male, age: 34 })?.points).toBe(73);
+    expect(calculateExerciseScore(45, 161, { ...male, age: 34 })?.points).toBe(8);
+    expect(calculateExerciseScore(45, 162, { ...male, age: 34 })).toBeNull();
 
 
     expect(calculateExerciseScore(38, 12.2, { kind: 'cadet', sex: 'male', course: 1 })?.points).toBe(100);
