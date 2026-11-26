@@ -159,7 +159,7 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(49, 170, {...male,specialization:'navy'})?.points).toBe(100);
     expect(calculateExerciseScore(50, 210, {...male,specialization:'mountain'})?.points).toBe(100);
     expect(calculateExerciseScore(51, 237, male)?.points).toBe(100);
-    expect(calculateExerciseScore(52, 184, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
+    expect(calculateExerciseScore(52, 184, {kind:'contract',sex:'male',age:24,specialization:'navy'})?.points).toBe(100);
     expect(calculateExerciseScore(54, 3, male)?.points).toBe(100);
     expect(calculateExerciseScore(54, 2, male)?.points).toBe(70);
     expect(calculateExerciseScore(54, 0, male)).toBeNull();
