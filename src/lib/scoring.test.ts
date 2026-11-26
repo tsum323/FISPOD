@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 21, 22]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -72,6 +72,19 @@ describe('Нормативный калькулятор: подтверждён�
   it('does not calculate weighted exercises without an explicit weight category', () => {
     expect(calculateExerciseScore(10, 65, male)).toBeNull();
     expect(calculateExerciseScore(10, 999, { ...male, weightCategory: '1' })).toBeNull();
+  });
+
+  it('calculates exact swimming times for exercises 20–22', () => {
+    expect(calculateExerciseScore(20, 30.0, male)?.points).toBe(100);
+    expect(calculateExerciseScore(20, 57.7, male)?.points).toBe(7);
+    expect(calculateExerciseScore(20, 58.2, male)?.points).toBe(2);
+    expect(calculateExerciseScore(20, 58.3, male)).toBeNull();
+    expect(calculateExerciseScore(21, 70, male)?.points).toBe(100);
+    expect(calculateExerciseScore(21, 195, male)?.points).toBe(2);
+    expect(calculateExerciseScore(21, 196, male)).toBeNull();
+    expect(calculateExerciseScore(22, 90, male)?.points).toBe(100);
+    expect(calculateExerciseScore(22, 220, male)?.points).toBe(2);
+    expect(calculateExerciseScore(22, 221, male)).toBeNull();
   });
 
   it('handles timed static hold using exact seconds from the table', () => {
