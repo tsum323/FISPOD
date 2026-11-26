@@ -2,8 +2,8 @@ import {describe,it,expect} from 'vitest';
 import {verifiedExerciseDetails} from './exercise-details';
 
 describe('verified exercise technique cards',()=>{
-  it('contains one checked card for each exercise 1–44',()=>{
-    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:58},(_,i)=>i+1));
+  it('contains one checked card for each exercise 1–70',()=>{
+    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:70},(_,i)=>i+1));
   });
   it('has complete card structure and valid figure references',()=>{
     for(const d of Object.values(verifiedExerciseDetails)){
@@ -14,7 +14,7 @@ describe('verified exercise technique cards',()=>{
       if(d.figure!==undefined)expect(d.figure).toBeGreaterThan(0);
     }
   });
-  it('records official strength exercise equipment masses',()=>{
+  it('records special exercise conditions and equipment through 70',()=>{\n    expect(verifiedExerciseDetails[59].rules.join(' ')).toContain('20 секунд');\n    expect(verifiedExerciseDetails[60].execution.join(' ')).toContain('1000 м');\n    expect(verifiedExerciseDetails[61].rules.join(' ')).toContain('165 м');\n    expect(verifiedExerciseDetails[62].execution.join(' ')).toContain('20 оборотов');\n    expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спираль');\n    expect(verifiedExerciseDetails[64].execution.join(' ')).toContain('четыре серии');\n    expect(verifiedExerciseDetails[65].rules.join(' ')).toContain('вариант 3');\n    expect(verifiedExerciseDetails[66].rules.join(' ')).toContain('30 кг');\n    expect(verifiedExerciseDetails[67].rules.join(' ')).toContain('коленями');\n    expect(verifiedExerciseDetails[68].rules.join(' ')).toContain('600–620 г');\n    expect(verifiedExerciseDetails[69].rules.join(' ')).toContain('310–330 г');\n    expect(verifiedExerciseDetails[70].rules.join(' ')).toContain('не допускаются');\n  });\n  it('records official strength exercise equipment masses',()=>{
     expect(verifiedExerciseDetails[10].rules.join(' ')).toContain('мужчины — 24 кг');
     expect(verifiedExerciseDetails[11].rules.join(' ')).toContain('женщины — 16 кг');
     expect(verifiedExerciseDetails[14].rules.join(' ')).toContain('мужчины — 70 кг');
