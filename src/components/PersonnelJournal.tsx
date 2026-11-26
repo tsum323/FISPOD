@@ -8,7 +8,7 @@ type Person={id:string;label:string;dob:string;sex:'male'|'female';kind:'contrac
 type RecordRow={id:string;personId:string;date:string;exercise:number;result:string;points:number|null;grade:string;age:number};
 const PEOPLE='people.v2',RECORDS='records.v2';
 function ageOn(dob:string,date:string){const b=new Date(dob+'T00:00:00'),d=new Date(date+'T00:00:00');let age=d.getFullYear()-b.getFullYear();if(d.getMonth()<b.getMonth()||(d.getMonth()===b.getMonth()&&d.getDate()<b.getDate()))age--;return age;}
-function csvEscape(v:unknown){return '"'+String(v??'').replaceAll('"','""')+'"';}
+function csvEscape(v:unknown){const raw=String(v??'');const safe=/^[\\s]*[=+@]/.test(raw)?"'"+raw:raw;return '"'+safe.replaceAll('"','""')+'"';}
 export default function PersonnelJournal({onCountChange}:{onCountChange?:(count:number)=>void}){
  const [people,setPeople]=useState<Person[]>(()=>readStore(PEOPLE,[])),[records,setRecords]=useState<RecordRow[]>(()=>readStore(RECORDS,[]));
  const [label,setLabel]=useState(''),[dob,setDob]=useState(''),[sex,setSex]=useState<Person['sex']>('male'),[kind,setKind]=useState<Person['kind']>('contract'),[course,setCourse]=useState<'1'|'2'|'3'>('1');
