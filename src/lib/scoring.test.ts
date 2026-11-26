@@ -52,7 +52,7 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(13, 180, male)?.points).toBe(100);
     expect(calculateExerciseScore(13, 275, male)?.points).toBe(81);
     expect(calculateExerciseScore(13, 645, male)?.points).toBe(7);
-    expect(calculateExerciseScore(13, 650, male)).toBeNull();
+    expect(calculateExerciseScore(13, 650, male)?.points).toBe(6);\n    expect(calculateExerciseScore(13, 655, male)).toBeNull();
   });
 
   it('handles timed static hold using exact seconds from the table', () => {
