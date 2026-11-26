@@ -66,4 +66,4 @@ export function getAgeScoreTable(exerciseNumber:number, age:number) {
   if(!table||!Number.isInteger(age)||age<18)return undefined;
   return age<35?table.under35:table.from35;
 }
-export const ageScoringSource='Приложение № 5, упражнения № 17–19 и № 23–28; приказ МО РФ № 230 в редакции от 08.12.2025, страницы 62–70.';
+export const ageScoringSource='Приложение № 5, упражнения № 17–19 и № 23–29; приказ МО РФ № 230 в редакции от 08.12.2025, страницы 62–70.';
