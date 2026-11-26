@@ -8,7 +8,7 @@ function build(rows: readonly SourceRow[]): Record<WeightCategory, readonly (rea
   const result: Record<WeightCategory, [number,number][]> = { '1':[], '2':[], '3':[] };
   for (const row of rows) {
     for (let band=0; band<4; band++) {
-      const offset=band*4, points=row[offset+3];
+      const offset=band*4, points=row[offset+3] as number;
       for (let category=0; category<3; category++) {
         const value=row[offset+category];
         if(value!==null) result[String(category+1) as WeightCategory].push([value,points]);
