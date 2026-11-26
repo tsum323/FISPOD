@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([...Array.from({length:52},(_,i)=>i+1).filter(n=>n!==53),54,55,56,57,58]);
+    expect(getVerifiedExerciseNumbers()).toEqual([...Array.from({length:52},(_,i)=>i+1).filter(n=>n!==53),54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -206,6 +206,46 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(23, 64, { ...male, age: 35 })?.points).toBe(100);
     expect(calculateExerciseScore(23, 59, { ...male, age: 34 })).toBeNull();
     expect(calculateExerciseScore(17, 7.8, { kind: 'contract', sex: 'male' })).toBeNull();
+  });
+
+  it('calculates special exercise score tables 59–70 exactly', () => {
+    expect(calculateExerciseScore(59, 840, male)?.points).toBe(100);
+    expect(calculateExerciseScore(59, 1020, male)?.points).toBe(10);
+    expect(calculateExerciseScore(59, 1022, male)).toBeNull();
+    expect(calculateExerciseScore(60, 290, male)?.points).toBe(100);
+    expect(calculateExerciseScore(60, 382, male)?.points).toBe(8);
+    expect(calculateExerciseScore(60, 383, male)).toBeNull();
+    expect(calculateExerciseScore(61, 75, male)?.points).toBe(100);
+    expect(calculateExerciseScore(61, 95, male)?.points).toBe(8);
+    expect(calculateExerciseScore(61, 96, male)).toBeNull();
+    expect(calculateExerciseScore(62, 30.0, male)?.points).toBe(100);
+    expect(calculateExerciseScore(62, 39.2, male)?.points).toBe(8);
+    expect(calculateExerciseScore(62, 39.3, male)).toBeNull();
+    expect(calculateExerciseScore(63, 30, male)?.points).toBe(100);
+    expect(calculateExerciseScore(63, 4, male)?.points).toBe(8);
+    expect(calculateExerciseScore(63, 3, male)).toBeNull();
+    expect(calculateExerciseScore(64, 42, male)?.points).toBe(100);
+    expect(calculateExerciseScore(64, 90, male)?.points).toBe(9);
+    expect(calculateExerciseScore(64, 91, male)).toBeNull();
+    expect(calculateExerciseScore(65, 3, { ...male, specialization: 'transport-aviation' })?.points).toBe(100);
+    expect(calculateExerciseScore(65, 1, { ...male, specialization: 'army-aviation' })?.points).toBe(40);
+    expect(calculateExerciseScore(65, 2, { ...male, specialization: 'tactical-aviation' })?.points).toBe(70);
+    expect(calculateExerciseScore(65, 3, male)).toBeNull();
+    expect(calculateExerciseScore(66, 32, male)?.points).toBe(100);
+    expect(calculateExerciseScore(66, 1, male)?.points).toBe(9);
+    expect(calculateExerciseScore(66, 0, male)).toBeNull();
+    expect(calculateExerciseScore(67, 340, male)?.points).toBe(100);
+    expect(calculateExerciseScore(67, 60, male)?.points).toBe(10);
+    expect(calculateExerciseScore(67, 59, male)).toBeNull();
+    expect(calculateExerciseScore(68, 46, male)?.points).toBe(100);
+    expect(calculateExerciseScore(68, 20, male)?.points).toBe(10);
+    expect(calculateExerciseScore(68, 19, male)).toBeNull();
+    expect(calculateExerciseScore(69, 3, male)?.points).toBe(100);
+    expect(calculateExerciseScore(69, 1, male)?.points).toBe(40);
+    expect(calculateExerciseScore(69, 0, male)).toBeNull();
+    expect(calculateExerciseScore(70, 130, male)?.points).toBe(100);
+    expect(calculateExerciseScore(70, 39, male)?.points).toBe(9);
+    expect(calculateExerciseScore(70, 38, male)).toBeNull();
   });
 
   it('handles timed static hold using exact seconds from the table', () => {
