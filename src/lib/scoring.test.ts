@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]);
+    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -93,7 +93,7 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(17, 8.9, { ...male, age: 34 })?.points).toBe(65);
     expect(calculateExerciseScore(18, 12.0, { ...male, age: 34 })?.points).toBe(100);
     expect(calculateExerciseScore(18, 13.0, { ...male, age: 35 })?.points).toBe(100);
-    expect(calculateExerciseScore(19, 24, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(19, 25, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(19, 25.1, { ...male, age: 35 })?.points).toBe(99);\n    expect(calculateExerciseScore(23, 60, { ...male, age: 34 })?.points).toBe(100);
+    expect(calculateExerciseScore(19, 24, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(19, 25, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(19, 25.1, { ...male, age: 35 })?.points).toBe(99);\n    expect(calculateExerciseScore(23, 60, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(24, 195, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(24, 205, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(24, 385, { ...male, age: 34 })?.points).toBe(2);
     expect(calculateExerciseScore(23, 64, { ...male, age: 35 })?.points).toBe(100);
     expect(calculateExerciseScore(23, 59, { ...male, age: 34 })).toBeNull();
     expect(calculateExerciseScore(17, 7.8, { kind: 'contract', sex: 'male' })).toBeNull();
