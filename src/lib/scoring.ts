@@ -1,4 +1,5 @@
 import { verifiedExerciseScores } from '../data/verified-score-tables';
+import { getGradeThresholds } from '../data/evaluation-thresholds';
 
 export type ServiceProfile = {
   kind: 'conscript' | 'contract' | 'cadet';
@@ -16,57 +17,6 @@ export type ScoreResult = {
   result: number;
 };
 
-function thresholds(profile: ServiceProfile) {
-  if (profile.kind === 'conscript') {
-    if (profile.sex !== 'male') {
-      throw new Error('Для женщины-призывника приложение № 12 не содержит подтверждённой отдельной строки. Автоматический расчёт заблокирован.');
-    }
-    return { five: 60, four: 40, three: 30 };
-  }
-
-  if (profile.kind === 'cadet') {
-    if (profile.course !== 1 && profile.course !== 2 && profile.course !== 3) {
-      throw new Error('Укажи курс обучения: 1, 2 или 3 и старше.');
-    }
-    if (profile.sex === 'female') {
-      if (profile.course === 1) return { five: 22, four: 15, three: 9 };
-      if (profile.course === 2) return { five: 24, four: 17, three: 10 };
-      return { five: 26, four: 19, three: 11 };
-    }
-    if (profile.course === 1) return { five: 65, four: 55, three: 45 };
-    if (profile.course === 2) return { five: 70, four: 65, three: 55 };
-    return { five: 75, four: 70, three: 65 };
-  }
-
-  const age = profile.age;
-  if (!Number.isInteger(age) || age! < 18) {
-    throw new Error('Укажи корректный полный возраст военнослужащего (не менее 18 лет).');
-  }
-
-  if (profile.sex === 'female') {
-    if (age! < 25) return { five: 22, four: 15, three: 9 };
-    if (age! < 30) return { five: 20, four: 14, three: 8 };
-    if (age! < 35) return { five: 18, four: 13, three: 7 };
-    if (age! < 40) return { five: 16, four: 12, three: 6 };
-    if (age! < 45) return { five: 14, four: 11, three: 5 };
-    if (age! < 50) return { five: 12, four: 9, three: 4 };
-    return { five: 10, four: 7, three: 3 };
-  }
-
-  if (age! < 25) return { five: 70, four: 50, three: 34 };
-  if (age! < 30) return { five: 68, four: 48, three: 32 };
-  if (age! < 35) return { five: 60, four: 40, three: 30 };
-  if (age! < 40) return { five: 55, four: 36, three: 26 };
-  if (age! < 45) return { five: 50, four: 30, three: 24 };
-  if (age! < 50) return { five: 40, four: 25, three: 18 };
-  if (age! < 55) return { five: 30, four: 20, three: 14 };
-  if (age! < 60) return { five: 20, four: 16, three: 12 };
-  if (age === 60) {
-    throw new Error('В приложении № 12 пересекаются возрастные интервалы 55–60 и 60 лет и старше. Требуется ручная проверка категории для 60 лет.');
-  }
-  return { five: 15, four: 12, three: 10 };
-}
-
 export function calculateExerciseScore(
   exerciseNumber: number,
   result: number,
@@ -78,7 +28,7 @@ export function calculateExerciseScore(
   if (!match) return null;
 
   const points = match[1];
-  const t = thresholds(profile);
+  const t = getGradeThresholds(profile);
   const grade: 5 | 4 | 3 | 0 =
     points >= t.five ? 5 : points >= t.four ? 4 : points >= t.three ? 3 : 0;
 
