@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 13]);
+    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -56,7 +56,24 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(13, 655, male)).toBeNull();
   });
 
-  it('handles timed static hold using exact seconds from the table', () => {
+
+  it('calculates weighted strength tables by body-mass category', () => {
+    expect(calculateExerciseScore(10, 65, { ...male, weightCategory: '1' })?.points).toBe(100);
+    expect(calculateExerciseScore(10, 75, { ...male, weightCategory: '2' })?.points).toBe(100);
+    expect(calculateExerciseScore(10, 85, { ...male, weightCategory: '3' })?.points).toBe(100);
+    expect(calculateExerciseScore(10, 47, { ...male, weightCategory: '1' })?.points).toBe(64);
+    expect(calculateExerciseScore(11, 22, { ...male, weightCategory: '1' })?.points).toBe(100);
+    expect(calculateExerciseScore(12, 28, { ...male, weightCategory: '3' })?.points).toBe(100);
+    expect(calculateExerciseScore(14, 30, { ...male, weightCategory: '3' })?.points).toBe(100);
+    expect(calculateExerciseScore(15, 22, { ...male, weightCategory: '1' })?.points).toBe(100);
+    expect(calculateExerciseScore(16, 30, { ...male, weightCategory: '3' })?.points).toBe(100);
+  });
+
+  it('does not calculate weighted exercises without an explicit weight category', () => {
+    expect(calculateExerciseScore(10, 65, male)).toBeNull();
+    expect(calculateExerciseScore(10, 65, { ...male, weightCategory: '1' })).toBeNull();
+  });
+\n  it('handles timed static hold using exact seconds from the table', () => {
     expect(calculateExerciseScore(9, 40, male)?.points).toBe(100);
     expect(calculateExerciseScore(9, 40.5, male)).toBeNull();
   });
