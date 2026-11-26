@@ -13,7 +13,7 @@ export default function ComplexEvaluation(){
  const parseResult=(exercise:number,value:string):number=>{
   if(exercise!==13)return Number(value.replace(',','.'));
   const match=value.trim().match(/^(\d{1,2}):(\d{2})$/);
-  if(!match)return Number.NaN;
+  if(!match||Number(match[2])>59)return Number.NaN;
   return Number(match[1])*60+Number(match[2]);
  };
  const computed=useMemo(()=>{
