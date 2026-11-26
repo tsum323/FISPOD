@@ -7,5 +7,6 @@ describe('Нормативный калькулятор: подтверждён�
  it('applies female contract thresholds',()=>expect(calculateExerciseScore(1,10,{kind:'contract',sex:'female',age:52})?.grade).toBe(5));
  it('applies conscript thresholds',()=>expect(calculateExerciseScore(1,15,{kind:'conscript',sex:'male'})?.grade).toBe(3));
  it('does not extrapolate outside a table',()=>expect(calculateExerciseScore(1,51,male)).toBeNull());
+ it('flags the overlapping 60-year threshold printed in Appendix 12',()=>expect(()=>calculateExerciseScore(1,10,{kind:'contract',sex:'male',age:60})).toThrow(/пересекаются/));
  it('handles timed static hold using exact seconds from the table',()=>{expect(calculateExerciseScore(9,40,male)?.points).toBe(100);expect(calculateExerciseScore(9,40.5,male)).toBeNull();});
 });
