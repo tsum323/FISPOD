@@ -11,7 +11,6 @@ export type ServiceProfile = {
   age?: number;
   course?: 1 | 2 | 3;
   weightCategory?: WeightCategory;
-  cadetTrack?: 'ground_marine' | 'armored_engineering' | 'other';
 };
 
 export type ScoreResult = {
@@ -30,8 +29,6 @@ export function calculateExerciseScore(
 ): ScoreResult | null {
   if (!Number.isFinite(result)) return null;
   if ([33,34,35,36,37,38,46,47].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
-  if (exerciseNumber === 46 && profile.cadetTrack !== 'ground_marine') return null;
-  if (exerciseNumber === 47 && profile.cadetTrack !== 'armored_engineering') return null;
   if ([46,47].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
   const requiredSpecialization: Record<number,NonNullable<ServiceProfile['specialization']>> = {46:'ground-cadet',47:'tank-cadet',48:'airborne',49:'navy',50:'mountain',52:'navy'};
   const required=requiredSpecialization[exerciseNumber];
