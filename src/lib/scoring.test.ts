@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]);
+    expect(getVerifiedExerciseNumbers()).toEqual([...Array.from({length:52},(_,i)=>i+1).filter(n=>n!==53),54,55,56,57,58]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -155,9 +155,9 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(46, 170, {kind:'cadet',sex:'male',course:1,specialization:'ground-cadet'})?.points).toBe(100);
     expect(calculateExerciseScore(46, 170, {kind:'cadet',sex:'male',course:1,specialization:'airborne'})).toBeNull();
     expect(calculateExerciseScore(47, 170, {kind:'cadet',sex:'male',course:1,specialization:'tank-cadet'})?.points).toBe(100);
-    expect(calculateExerciseScore(48, 170, {kind:'contract',sex:'male',specialization:'airborne'})?.points).toBe(100);
-    expect(calculateExerciseScore(49, 170, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
-    expect(calculateExerciseScore(50, 210, {kind:'contract',sex:'male',specialization:'mountain'})?.points).toBe(100);
+    expect(calculateExerciseScore(48, 170, {...male,specialization:'airborne'})?.points).toBe(100);
+    expect(calculateExerciseScore(49, 170, {...male,specialization:'navy'})?.points).toBe(100);
+    expect(calculateExerciseScore(50, 210, {...male,specialization:'mountain'})?.points).toBe(100);
     expect(calculateExerciseScore(51, 237, male)?.points).toBe(100);
     expect(calculateExerciseScore(52, 184, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
     expect(calculateExerciseScore(54, 3, male)?.points).toBe(100);
