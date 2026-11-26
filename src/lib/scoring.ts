@@ -5,7 +5,7 @@ import { verifiedAgeExerciseScores, getAgeScoreTable } from '../data/age-score-t
 import { getGradeThresholds } from '../data/evaluation-thresholds';
 
 export type ServiceProfile = {
-  specialization?: 'ground-cadet'|'tank-cadet'|'airborne'|'navy'|'mountain';
+  specialization?: 'ground-cadet'|'tank-cadet'|'airborne'|'navy'|'mountain'|'transport-aviation'|'army-aviation'|'tactical-aviation';
   kind: 'conscript' | 'contract' | 'cadet';
   sex: 'male' | 'female';
   age?: number;
@@ -31,6 +31,7 @@ export function calculateExerciseScore(
   if ([33,34,35,36,37,38,46,47].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
   if ([46,47].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
   const requiredSpecialization: Record<number,NonNullable<ServiceProfile['specialization']>> = {46:'ground-cadet',47:'tank-cadet',48:'airborne',49:'navy',50:'mountain',52:'navy'};
+  if (exerciseNumber===65 && !['transport-aviation','army-aviation','tactical-aviation'].includes(profile.specialization ?? '')) return null;
   const required=requiredSpecialization[exerciseNumber];
   if(required && profile.specialization!==required)return null;
 
