@@ -3,7 +3,7 @@ import {verifiedExerciseDetails} from './exercise-details';
 
 describe('verified exercise technique cards',()=>{
   it('contains one checked card for each exercise 1–44',()=>{
-    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:52},(_,i)=>i+1));
+    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:58},(_,i)=>i+1));
   });
   it('has complete card structure and valid figure references',()=>{
     for(const d of Object.values(verifiedExerciseDetails)){
@@ -59,6 +59,12 @@ describe('verified exercise technique cards',()=>{
   expect(verifiedExerciseDetails[50].rules.join(' ')).toContain('горных подразделений');
   expect(verifiedExerciseDetails[51].rules.join(' ')).toContain('500 м');
   expect(verifiedExerciseDetails[52].rules.join(' ')).toContain('305 м');
+  expect(verifiedExerciseDetails[53].rules.join(' ')).toContain('рукопашному бою');
+  expect(verifiedExerciseDetails[54].rules.join(' ')).toContain('20 × 30 см');
+  expect(verifiedExerciseDetails[55].rules.join(' ')).toContain('700 мм');
+  expect(verifiedExerciseDetails[56].execution.join(' ')).toContain('50 м');
+  expect(verifiedExerciseDetails[57].execution.join(' ')).toContain('100 м');
+  expect(verifiedExerciseDetails[58].rules.join(' ')).toContain('не выполнять в одиночку');
   });
   it('links the shuttle-run card to its exact source page',()=>{
     expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d');
