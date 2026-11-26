@@ -65,7 +65,7 @@ export const verifiedAgeExerciseScores: Record<number, ReturnType<typeof byAge>>
 [77,81,37],[78,82,35],[79,83,33],[80,84,31],[81,85,29],[82,86,28],[83,87,27],[84,88,26],[85,89,25],[86,90,24],[87,91,23],[88,92,22],[89,93,21],[90,96,20],[91,98,19],[92,100,18],[94,102,17],
 [96,104,16],[98,106,15],[100,108,14],[102,110,13],[104,112,12],[106,114,11],[107,116,10],[108,118,9],[109,120,8],[110,122,7],[111,124,6],[112,126,5],[113,128,4],[114,130,3],[115,132,2]
 ]),
-};};
+};
 export function getAgeScoreTable(exerciseNumber:number, age:number) {
   const table=verifiedAgeExerciseScores[exerciseNumber];
   if(!table||!Number.isInteger(age)||age<18)return undefined;
