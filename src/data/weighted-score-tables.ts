@@ -88,3 +88,5 @@ export const verifiedWeightedExerciseScores: Record<number, Record<WeightCategor
 [16,20,24,88,11,15,17,65,4,8,10,30,null,null,null,null]
 ])
 };
+
+export const weightedScoringSource = 'Приложение № 5, таблицы упражнений № 10–12 и № 14–16; приказ МО РФ № 230 в редакции от 08.12.2025, страницы 49–61.';
