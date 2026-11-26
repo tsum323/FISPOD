@@ -3,7 +3,7 @@ import {verifiedExerciseDetails} from './exercise-details';
 
 describe('verified exercise technique cards',()=>{
   it('contains one checked card for each exercise 1–44',()=>{
-    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:44},(_,i)=>i+1));
+    expect(Object.keys(verifiedExerciseDetails).map(Number).sort((a,b)=>a-b)).toEqual(Array.from({length:52},(_,i)=>i+1));
   });
   it('has complete card structure and valid figure references',()=>{
     for(const d of Object.values(verifiedExerciseDetails)){
@@ -51,6 +51,14 @@ describe('verified exercise technique cards',()=>{
     expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
     expect(verifiedExerciseDetails[43].rules.join(' ')).toContain('переходить на шаг');
     expect(verifiedExerciseDetails[44].equipment.join(' ')).toContain('Лыжи');
+  expect(verifiedExerciseDetails[45].rules.join(' ')).toContain('400 м');
+  expect(verifiedExerciseDetails[46].rules.join(' ')).toContain('курсантов');
+  expect(verifiedExerciseDetails[47].rules.join(' ')).toContain('танковых');
+  expect(verifiedExerciseDetails[48].rules.join(' ')).toContain('Воздушно-десантных');
+  expect(verifiedExerciseDetails[49].rules.join(' ')).toContain('надводных кораблей');
+  expect(verifiedExerciseDetails[50].rules.join(' ')).toContain('горных подразделений');
+  expect(verifiedExerciseDetails[51].rules.join(' ')).toContain('500 м');
+  expect(verifiedExerciseDetails[52].rules.join(' ')).toContain('305 м');
   });
   it('links the shuttle-run card to its exact source page',()=>{
     expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d');
