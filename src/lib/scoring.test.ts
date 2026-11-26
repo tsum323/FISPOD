@@ -152,6 +152,14 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(43, 2040, male)?.points).toBe(10);
     expect(calculateExerciseScore(44, 1610, male)?.points).toBe(100);
     expect(calculateExerciseScore(44, 2520, male)?.points).toBe(8);
+    expect(calculateExerciseScore(46, 170, {kind:'cadet',sex:'male',course:1,specialization:'ground-cadet'})?.points).toBe(100);
+    expect(calculateExerciseScore(46, 170, {kind:'cadet',sex:'male',course:1,specialization:'airborne'})).toBeNull();
+    expect(calculateExerciseScore(47, 170, {kind:'cadet',sex:'male',course:1,specialization:'tank-cadet'})?.points).toBe(100);
+    expect(calculateExerciseScore(48, 170, {kind:'contract',sex:'male',specialization:'airborne'})?.points).toBe(100);
+    expect(calculateExerciseScore(49, 170, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
+    expect(calculateExerciseScore(50, 210, {kind:'contract',sex:'male',specialization:'mountain'})?.points).toBe(100);
+    expect(calculateExerciseScore(51, 237, male)?.points).toBe(100);
+    expect(calculateExerciseScore(52, 184, {kind:'contract',sex:'male',specialization:'navy'})?.points).toBe(100);
     expect(calculateExerciseScore(39, 15.0, male)?.points).toBe(100);
     expect(calculateExerciseScore(39, 22.0, male)?.points).toBe(12);
     expect(calculateExerciseScore(39, 22.1, male)).toBeNull();
