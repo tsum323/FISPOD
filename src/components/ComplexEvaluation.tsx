@@ -11,7 +11,8 @@ export default function ComplexEvaluation(){
  const [items,setItems]=useState<Item[]>([{id:1,exercise:1,result:''},{id:2,exercise:2,result:''},{id:3,exercise:3,result:''}]);
  const profile:ComplexProfile={kind,sex,age:Number(age),course:Number(course) as 1|2|3,category:Number(category) as 1|2|3};
  const parseResult=(exercise:number,value:string):number=>{
-  if(exercise===20)return Number(value.replace(',','.'));\n  if(![13,21,22].includes(exercise))return Number(value.replace(',','.'));
+  if(exercise===20)return Number(value.replace(',','.'));
+  if(![13,21,22].includes(exercise))return Number(value.replace(',','.'));
   const match=value.trim().match(/^(\d{1,2}):(\d{2})$/);
   if(!match||Number(match[2])>59)return Number.NaN;
   return Number(match[1])*60+Number(match[2]);
