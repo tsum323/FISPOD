@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 13]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -48,7 +48,7 @@ describe('Нормативный калькулятор: подтверждён�
     expect(() => calculateExerciseScore(1, 10, { kind: 'contract', sex: 'male', age: 60 })).toThrow(/пересекаются/);
   });
 
-  it('handles timed static hold using exact seconds from the table', () => {
+  it('handles exercise 13 exact times in seconds without interpolation', () => {\n    expect(calculateExerciseScore(13, 180, male)?.points).toBe(100);\n    expect(calculateExerciseScore(13, 275, male)?.points).toBe(81);\n    expect(calculateExerciseScore(13, 645, male)?.points).toBe(7);\n    expect(calculateExerciseScore(13, 650, male)).toBeNull();\n  });\n\n  it('handles timed static hold using exact seconds from the table', () => {
     expect(calculateExerciseScore(9, 40, male)?.points).toBe(100);
     expect(calculateExerciseScore(9, 40.5, male)).toBeNull();
   });
