@@ -12,4 +12,4 @@ const rows: [number,string,ExerciseGroup][] = [
 ];
 export const exercises: Exercise[] = rows.map(([number,title,group])=>({number,title,group,section:number<=38?'Общие физические упражнения':'Специальные физические упражнения',verifiedIndex:true,detailsVerified:false}));
 export const groups = [...new Set(exercises.map(x=>x.group))];
-export const sourceUrl = 'https://sudact.ru/law/prikaz-ministra-oborony-rf-ot-20042023-n_1/prilozhenie/prilozhenie-n-5/';
+export const sourceUrl = 'https://www.consultant.ru/document/cons_doc_LAW_450143/';
