@@ -5,6 +5,7 @@ import { verifiedAgeExerciseScores, getAgeScoreTable } from '../data/age-score-t
 import { getGradeThresholds } from '../data/evaluation-thresholds';
 
 export type ServiceProfile = {
+  specialization?: 'ground-cadet'|'tank-cadet'|'airborne'|'navy'|'mountain';
   kind: 'conscript' | 'contract' | 'cadet';
   sex: 'male' | 'female';
   age?: number;
@@ -28,6 +29,10 @@ export function calculateExerciseScore(
 ): ScoreResult | null {
   if (!Number.isFinite(result)) return null;
   if ([33,34,35,36,37,38].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
+  if ([46,47].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
+  const requiredSpecialization: Record<number,NonNullable<ServiceProfile['specialization']>> = {46:'ground-cadet',47:'tank-cadet',48:'airborne',49:'navy',50:'mountain',52:'navy'};
+  const required=requiredSpecialization[exerciseNumber];
+  if(required && profile.specialization!==required)return null;
 
   let match: readonly [number, number] | undefined;
   const weightedTable = verifiedWeightedExerciseScores[exerciseNumber];
