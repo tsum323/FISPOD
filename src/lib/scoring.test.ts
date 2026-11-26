@@ -5,7 +5,7 @@ describe('Нормативный калькулятор: подтверждён�
   const male = { kind: 'contract' as const, sex: 'male' as const, age: 24 };
 
   it('exposes only verified exercise tables', () => {
-    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]);
+    expect(getVerifiedExerciseNumbers()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]);
   });
 
   it('uses exact values without interpolation', () => {
@@ -112,6 +112,13 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(28, 540, { ...male, age: 34 })?.points).toBe(100);
     expect(calculateExerciseScore(28, 570, { ...male, age: 35 })?.points).toBe(100);
     expect(calculateExerciseScore(28, 1075, { ...male, age: 35 })?.points).toBe(2);\n    expect(calculateExerciseScore(29, 400, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(29, 360, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(29, 217, { ...male, age: 34 })?.points).toBe(2);
+    expect(calculateExerciseScore(30, 9.0, male)?.points).toBe(100);
+    expect(calculateExerciseScore(30, 18.6, male)?.points).toBe(2);
+    expect(calculateExerciseScore(30, 18.7, male)).toBeNull();
+    expect(calculateExerciseScore(31, 180, male)?.points).toBe(100);
+    expect(calculateExerciseScore(31, 100, male)?.points).toBe(20);
+    expect(calculateExerciseScore(31, 99, male)).toBeNull();
+
 
     expect(calculateExerciseScore(23, 64, { ...male, age: 35 })?.points).toBe(100);
     expect(calculateExerciseScore(23, 59, { ...male, age: 34 })).toBeNull();
