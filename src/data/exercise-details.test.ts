@@ -86,7 +86,7 @@ describe('verified exercise technique cards',()=>{
   expect(verifiedExerciseDetails[62].rules.join(' ')).toContain('20 оборотов');
   expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спиралей');
   expect(verifiedExerciseDetails[64].execution.join(' ')).toContain('четыре серии');
-  expect(verifiedExerciseDetails[65].rules.join(' ')).toContain('армейской авиации');
+  expect(verifiedExerciseDetails[65].execution.join(' ')).toContain('армейской авиации');
   expect(verifiedExerciseDetails[66].execution.join(' ')).toContain('прямых руках');
   expect(verifiedExerciseDetails[67].rules.join(' ')).toContain('коленями');
   expect(verifiedExerciseDetails[68].equipment.join(' ')).toContain('600–620 г');
