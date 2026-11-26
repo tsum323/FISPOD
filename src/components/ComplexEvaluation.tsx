@@ -12,7 +12,7 @@ export default function ComplexEvaluation(){
  const profile:ComplexProfile={kind,sex,age:Number(age),course:Number(course) as 1|2|3,category:Number(category) as 1|2|3};
  const parseResult=(exercise:number,value:string):number=>{
   if(exercise!==13)return Number(value.replace(',','.'));
-  const match=value.trim().match(/^(\\d{1,2}):(\\d{2})$/);
+  const match=value.trim().match(/^(\d{1,2}):(\d{2})$/);
   if(!match)return Number.NaN;
   return Number(match[1])*60+Number(match[2]);
  };
