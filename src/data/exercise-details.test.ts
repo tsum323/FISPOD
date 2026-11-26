@@ -18,7 +18,7 @@ describe('verified exercise technique cards',()=>{
     expect(verifiedExerciseDetails[59].rules.join(' ')).toContain('20 секунд');
     expect(verifiedExerciseDetails[60].execution.join(' ')).toContain('1000 м');
     expect(verifiedExerciseDetails[61].rules.join(' ')).toContain('165 м');
-    expect(verifiedExerciseDetails[62].execution.join(' ')).toContain('20 оборотов');
+    expect(verifiedExerciseDetails[62].rules.join(' ')).toContain('20 оборотов');
     expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спираль');
     expect(verifiedExerciseDetails[64].execution.join(' ')).toContain('четыре серии');
     expect(verifiedExerciseDetails[65].rules.join(' ')).toContain('вариант 3');
