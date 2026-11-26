@@ -206,3 +206,9 @@ footer span{overflow-wrap:anywhere}
  .content{padding-top:16px}
  .hero-panel{min-height:145px}
 }
+
+.mobile-result-link{display:none}
+@media(max-width:760px){
+ .mobile-result-link{display:flex;position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;width:100%;min-height:48px;align-items:center;justify-content:center;margin-top:14px;border:1px solid #667b50;border-radius:9px;background:#809765;color:#10160e;font-size:13px;font-weight:800;box-shadow:0 6px 22px #0008}
+ #score-result,#complex-result{scroll-margin-top:72px}
+}
