@@ -7,6 +7,7 @@ const variantExercises = new Set([33,34,35,65]);
 const hitExercises = new Set([54,55,69]);
 const distanceExercises = new Set([58,68]);
 export function getResultInputConfig(exercise:number):ResultInputConfig {
+ if(clockExercises.has(exercise)&&[59,61].includes(exercise))return {kind:'clock',label:'Итоговое время с учётом штрафов, ММ:СС',placeholder:'Сначала прибавь все предусмотренные штрафы',inputMode:'text',unit:'сек.'};
  if(clockExercises.has(exercise))return {kind:'clock',label:'Время, ММ:СС',placeholder:'Например, 1:35',inputMode:'text',unit:'сек.'};
  if(decimalSecondExercises.has(exercise))return {kind:'decimal-seconds',label:'Время, секунды',placeholder:'Например, 11,5',inputMode:'decimal',unit:'сек.'};
  if(secondExercises.has(exercise))return {kind:'seconds',label:'Время удержания, секунды',placeholder:'Например, 32',inputMode:'decimal',unit:'сек.'};
