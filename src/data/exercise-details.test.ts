@@ -80,6 +80,18 @@ describe('verified exercise technique cards',()=>{
   expect(verifiedExerciseDetails[56].execution.join(' ')).toContain('50 м');
   expect(verifiedExerciseDetails[57].execution.join(' ')).toContain('100 м');
   expect(verifiedExerciseDetails[58].rules.join(' ')).toContain('не выполнять в одиночку');
+  expect(verifiedExerciseDetails[59].rules.join(' ')).toContain('20 секунд');
+  expect(verifiedExerciseDetails[60].execution.join(' ')).toContain('1000 м');
+  expect(verifiedExerciseDetails[61].rules.join(' ')).toContain('2 секунды');
+  expect(verifiedExerciseDetails[62].rules.join(' ')).toContain('20 оборотов');
+  expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спиралей');
+  expect(verifiedExerciseDetails[64].rules.join(' ')).toContain('четыре серии');
+  expect(verifiedExerciseDetails[65].rules.join(' ')).toContain('армейской авиации');
+  expect(verifiedExerciseDetails[66].execution.join(' ')).toContain('прямых руках');
+  expect(verifiedExerciseDetails[67].rules.join(' ')).toContain('коленями');
+  expect(verifiedExerciseDetails[68].equipment.join(' ')).toContain('600–620 г');
+  expect(verifiedExerciseDetails[69].rules.join(' ')).toContain('25 м');
+  expect(verifiedExerciseDetails[70].rules.join(' ')).toContain('хватом сверху');
   });
   it('links the shuttle-run card to its exact source page',()=>{
     expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d');
