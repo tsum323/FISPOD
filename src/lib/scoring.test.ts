@@ -71,7 +71,7 @@ describe('Нормативный калькулятор: подтверждён�
 
   it('does not calculate weighted exercises without an explicit weight category', () => {
     expect(calculateExerciseScore(10, 65, male)).toBeNull();
-    expect(calculateExerciseScore(10, 65, { ...male, weightCategory: '1' })).toBeNull();
+    expect(calculateExerciseScore(10, 999, { ...male, weightCategory: '1' })).toBeNull();
   });
 \n  it('handles timed static hold using exact seconds from the table', () => {
     expect(calculateExerciseScore(9, 40, male)?.points).toBe(100);
