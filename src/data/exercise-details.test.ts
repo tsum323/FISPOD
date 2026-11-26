@@ -91,7 +91,7 @@ describe('verified exercise technique cards',()=>{
   expect(verifiedExerciseDetails[67].rules.join(' ')).toContain('коленями');
   expect(verifiedExerciseDetails[68].equipment.join(' ')).toContain('600–620 г');
   expect(verifiedExerciseDetails[69].rules.join(' ')).toContain('25 м');
-  expect(verifiedExerciseDetails[70].rules.join(' ')).toContain('хватом сверху');
+  expect(verifiedExerciseDetails[70].start).toContain('хватом сверху');
   });
   it('links the shuttle-run card to its exact source page',()=>{
     expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d');
