@@ -26,7 +26,7 @@ export function calculateExerciseScore(
   result: number,
   profile: ServiceProfile,
 ): ScoreResult | null {
-  if (!Number.isFinite(result)) return null;\n  if ([33,34,35].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
+  if (!Number.isFinite(result)) return null;\n  if ([33,34,35,36,37].includes(exerciseNumber) && profile.kind !== 'cadet') return null;
 
   let match: readonly [number, number] | undefined;
   const weightedTable = verifiedWeightedExerciseScores[exerciseNumber];
