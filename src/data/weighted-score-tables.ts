@@ -3,12 +3,13 @@
 // category 3, points]. The category labels are sex-specific, but the table aligns the
 // three body-mass categories in the same columns for women and men.
 export type WeightCategory = '1' | '2' | '3';
-type SourceRow = readonly [number|null,number|null,number|null,number,number|null,number|null,number|null,number,number|null,number|null,number|null,number,number|null,number|null,number|null,number];
+type SourceRow = readonly [number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null,number|null];
 function build(rows: readonly SourceRow[]): Record<WeightCategory, readonly (readonly [number,number])[]> {
   const result: Record<WeightCategory, [number,number][]> = { '1':[], '2':[], '3':[] };
   for (const row of rows) {
     for (let band=0; band<4; band++) {
-      const offset=band*4, points=row[offset+3] as number;
+      const offset=band*4, points=row[offset+3];
+      if(points===null) continue;
       for (let category=0; category<3; category++) {
         const value=row[offset+category];
         if(value!==null) result[String(category+1) as WeightCategory].push([value,points]);
