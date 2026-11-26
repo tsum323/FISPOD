@@ -50,7 +50,7 @@ describe('verified exercise technique cards',()=>{
     expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('три отрезка');
     expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
     expect(verifiedExerciseDetails[43].rules.join(' ')).toContain('переходить на шаг');
-    expect(verifiedExerciseDetails[44].equipment.join(' ')).toContain('Лыжи');
+    expect(verifiedExerciseDetails[44].equipment.join(' ')).toContain('Лыжи');\n  expect(verifiedExerciseDetails[45].execution.join(' ')).toContain('600–620 г');
   expect(verifiedExerciseDetails[45].rules.join(' ')).toContain('400 м');
   expect(verifiedExerciseDetails[46].rules.join(' ')).toContain('курсантов');
   expect(verifiedExerciseDetails[47].rules.join(' ')).toContain('танковых');
