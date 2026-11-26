@@ -15,5 +15,12 @@ describe('verified exercise technique cards',()=>{it('contains checked descripti
   expect(verifiedExerciseDetails[25].execution.join(' ')).toContain('3 км');
   expect(verifiedExerciseDetails[26].execution.join(' ')).toContain('5 км');
   expect(verifiedExerciseDetails[27].rules.join(' ')).toContain('лыжами');
-  expect(verifiedExerciseDetails[28].execution.join(' ')).toContain('500 м');\n  expect(verifiedExerciseDetails[29].rules.join(' ')).toContain('30 см');\n  expect(verifiedExerciseDetails[30].execution.join(' ')).toContain('два кувырка вперед');\n  expect(verifiedExerciseDetails[31].rules.join(' ')).toContain('одной минуты');\n  expect(verifiedExerciseDetails[32].rules.join(' ')).toContain('110–125 см');\n  expect(verifiedExerciseDetails[33].rules.join(' ')).toContain('курсанты');\n  expect(verifiedExerciseDetails[34].execution.join(' ')).toContain('подъем разгибом');\n  expect(verifiedExerciseDetails[35].rules.join(' ')).toContain('120–130 см');
+  expect(verifiedExerciseDetails[28].execution.join(' ')).toContain('500 м');
+  expect(verifiedExerciseDetails[29].rules.join(' ')).toContain('30 см');
+  expect(verifiedExerciseDetails[30].execution.join(' ')).toContain('два кувырка вперед');
+  expect(verifiedExerciseDetails[31].rules.join(' ')).toContain('одной минуты');
+  expect(verifiedExerciseDetails[32].rules.join(' ')).toContain('110–125 см');
+  expect(verifiedExerciseDetails[33].rules.join(' ')).toContain('курсанты');
+  expect(verifiedExerciseDetails[34].execution.join(' ')).toContain('подъем разгибом');
+  expect(verifiedExerciseDetails[35].rules.join(' ')).toContain('120–130 см');
 });it('links shuttle-run technique to its exact source page',()=>expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d'));});
