@@ -1,0 +1,6 @@
+import { describe,it,expect } from 'vitest';import { exercises } from './exercises';
+describe('НФП-2023 exercise index',()=>{
+ it('contains exactly 70 numbered exercises',()=>{expect(exercises).toHaveLength(70);expect(exercises.map(x=>x.number)).toEqual(Array.from({length:70},(_,i)=>i+1));});
+ it('has non-empty official titles and groups',()=>{for(const e of exercises){expect(e.title.trim().length).toBeGreaterThan(3);expect(e.group.trim().length).toBeGreaterThan(0);}});
+ it('marks the full set of detail cards as present',()=>{expect(exercises.every(e=>e.detailsVerified)).toBe(true);});
+});

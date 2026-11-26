@@ -1,0 +1,2 @@
+import {describe,it,expect} from 'vitest';import {ageOn} from './dates';
+describe('age at inspection date',()=>{it('does not advance age before birthday',()=>expect(ageOn('2000-12-10','2026-12-09')).toBe(25));it('advances age on birthday',()=>expect(ageOn('2000-12-10','2026-12-10')).toBe(26));it('handles birthday already passed this year',()=>expect(ageOn('2000-03-01','2026-11-26')).toBe(26));it('rejects invalid dates',()=>expect(()=>ageOn('bad','2026-11-26')).toThrow());});
