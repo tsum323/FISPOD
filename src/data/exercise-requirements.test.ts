@@ -17,8 +17,8 @@ describe('Требования к количеству и составу упр�
   expect(getExerciseRequirements({kind:'contract',sex:'male',age:60,category:2}).total).toBe(2);
  });
  it('определяет женские комплекты по возрастным группам',()=>{
-  expect(getExerciseRequirements({kind:'contract',sex:'female',age:49}).total).toBe(3);
-  expect(getExerciseRequirements({kind:'contract',sex:'female',age:50}).total).toBe(2);
+  expect(getExerciseRequirements({kind:'contract',sex:'female',age:44}).total).toBe(3);
+  expect(getExerciseRequirements({kind:'contract',sex:'female',age:45}).total).toBe(2);
  });
  it('определяет курсантов первого и последующих курсов',()=>{
   const first=getExerciseRequirements({kind:'cadet',sex:'male',course:1});
