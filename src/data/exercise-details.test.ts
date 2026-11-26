@@ -32,5 +32,9 @@ describe('verified exercise technique cards',()=>{it('contains checked descripti
   expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('три отрезка');
   expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
   expect(verifiedExerciseDetails[43].rules.join(' ')).toContain('переходить на шаг');
-  expect(verifiedExerciseDetails[44].execution.join(' ')).toContain('5 км');\n  expect(verifiedExerciseDetails[39].rules.join(' ')).toContain('30 кг');\n  expect(verifiedExerciseDetails[40].execution.join(' ')).toContain('60 м');\n  expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('четыре отрезка');\n  expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
+  expect(verifiedExerciseDetails[44].execution.join(' ')).toContain('5 км');
+  expect(verifiedExerciseDetails[39].rules.join(' ')).toContain('30 кг');
+  expect(verifiedExerciseDetails[40].execution.join(' ')).toContain('60 м');
+  expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('четыре отрезка');
+  expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
 });it('links shuttle-run technique to its exact source page',()=>expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d'));});
