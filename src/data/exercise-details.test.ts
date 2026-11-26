@@ -1,5 +1,5 @@
 import {describe,it,expect} from 'vitest';import {verifiedExerciseDetails} from './exercise-details';
-describe('verified exercise technique cards',()=>{it('contains checked descriptions for exercises 1 through 16 and 19',()=>{expect(Object.keys(verifiedExerciseDetails).map(Number)).toEqual([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]);});it('has start position, execution, rules, equipment and official figure reference',()=>{for(const d of Object.values(verifiedExerciseDetails)){expect(d.start.length).toBeGreaterThan(10);expect(d.execution.length).toBeGreaterThan(0);expect(d.rules.length).toBeGreaterThan(0);expect(d.equipment.length).toBeGreaterThan(0);if(d.figure!==undefined)expect(d.figure).toBeGreaterThan(0);}});it('records the correct fixed equipment masses and weight categories for strength exercises',()=>{
+describe('verified exercise technique cards',()=>{it('contains checked descriptions for exercises 1 through 16 and 19',()=>{expect(Object.keys(verifiedExerciseDetails).map(Number)).toEqual([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,39,40,41,42]);});it('has start position, execution, rules, equipment and official figure reference',()=>{for(const d of Object.values(verifiedExerciseDetails)){expect(d.start.length).toBeGreaterThan(10);expect(d.execution.length).toBeGreaterThan(0);expect(d.rules.length).toBeGreaterThan(0);expect(d.equipment.length).toBeGreaterThan(0);if(d.figure!==undefined)expect(d.figure).toBeGreaterThan(0);}});it('records the correct fixed equipment masses and weight categories for strength exercises',()=>{
   expect(verifiedExerciseDetails[10].rules.join(' ')).toContain('мужчины — 24 кг');
   expect(verifiedExerciseDetails[11].rules.join(' ')).toContain('женщины — 16 кг');
   expect(verifiedExerciseDetails[14].rules.join(' ')).toContain('мужчины — 70 кг');
@@ -26,5 +26,11 @@ describe('verified exercise technique cards',()=>{it('contains checked descripti
   expect(verifiedExerciseDetails[36].rules.join(' ')).toContain('15 × 28 м');
   expect(verifiedExerciseDetails[37].rules.join(' ')).toContain('20 × 40 м');
   expect(verifiedExerciseDetails[38].rules.join(' ')).toContain('2,43 м');
-  expect(verifiedExerciseDetails[38].execution.join(' ')).toContain('зону № 4');\n  expect(verifiedExerciseDetails[39].rules.join(' ')).toContain('30 кг');\n  expect(verifiedExerciseDetails[40].execution.join(' ')).toContain('60 м');\n  expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('четыре отрезка');\n  expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
+  expect(verifiedExerciseDetails[38].execution.join(' ')).toContain('зону № 4');
+  expect(verifiedExerciseDetails[39].equipment.join(' ')).toContain('30 кг');
+  expect(verifiedExerciseDetails[40].start).toContain('Лежа на животе');
+  expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('три отрезка');
+  expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
+  expect(verifiedExerciseDetails[43].rules.join(' ')).toContain('переходить на шаг');
+  expect(verifiedExerciseDetails[44].execution.join(' ')).toContain('5 км');\n  expect(verifiedExerciseDetails[39].rules.join(' ')).toContain('30 кг');\n  expect(verifiedExerciseDetails[40].execution.join(' ')).toContain('60 м');\n  expect(verifiedExerciseDetails[41].execution.join(' ')).toContain('четыре отрезка');\n  expect(verifiedExerciseDetails[42].execution.join(' ')).toContain('800 м');
 });it('links shuttle-run technique to its exact source page',()=>expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d'));});
