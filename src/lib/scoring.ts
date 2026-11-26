@@ -1,4 +1,5 @@
 import { verifiedExerciseScores } from '../data/verified-score-tables';
+import { verifiedWeightedExerciseScores, type WeightCategory } from '../data/weighted-score-tables';
 import { getGradeThresholds } from '../data/evaluation-thresholds';
 
 export type ServiceProfile = {
@@ -6,6 +7,7 @@ export type ServiceProfile = {
   sex: 'male' | 'female';
   age?: number;
   course?: 1 | 2 | 3;
+  weightCategory?: WeightCategory;
 };
 
 export type ScoreResult = {
@@ -22,9 +24,18 @@ export function calculateExerciseScore(
   result: number,
   profile: ServiceProfile,
 ): ScoreResult | null {
-  const table = verifiedExerciseScores[exerciseNumber];
-  if (!table || !Number.isFinite(result)) return null;
-  const match = table.find(([official]) => official === result);
+  if (!Number.isFinite(result) || !Number.isInteger(result)) return null;
+
+  let match: readonly [number, number] | undefined;
+  const weightedTable = verifiedWeightedExerciseScores[exerciseNumber];
+  if (weightedTable) {
+    if (!profile.weightCategory) return null;
+    match = weightedTable[profile.weightCategory].find(([official]) => official === result);
+  } else {
+    const table = verifiedExerciseScores[exerciseNumber];
+    if (!table) return null;
+    match = table.find(([official]) => official === result);
+  }
   if (!match) return null;
 
   const points = match[1];
@@ -43,5 +54,8 @@ export function calculateExerciseScore(
 }
 
 export function getVerifiedExerciseNumbers() {
-  return Object.keys(verifiedExerciseScores).map(Number).sort((a, b) => a - b);
+  return [...new Set([
+    ...Object.keys(verifiedExerciseScores).map(Number),
+    ...Object.keys(verifiedWeightedExerciseScores).map(Number),
+  ])].sort((a, b) => a - b);
 }
