@@ -2,7 +2,7 @@
 // Times are stored in seconds. Exercise 20 uses tenths of a second.
 function range(start:number, firstPoints:number, count:number, step=1): [number,number][] {
   return Array.from({length:count},(_,i)=>[
-    step===0.3?Number((start+i*step).toFixed(1)):start+i*step,
+    step<1?Number((start+i*step).toFixed(1)):start+i*step,
     firstPoints-i,
   ]);
 }
