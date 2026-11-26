@@ -135,6 +135,10 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(37, 20.3, { kind: 'cadet', sex: 'female', course: 2 })?.points).toBe(2);
     expect(calculateExerciseScore(37, 20.4, { kind: 'cadet', sex: 'female', course: 2 })).toBeNull();
     expect(calculateExerciseScore(36, 11.0, male)).toBeNull();
+    expect(calculateExerciseScore(38, 12.2, { kind: 'cadet', sex: 'male', course: 1 })?.points).toBe(100);
+    expect(calculateExerciseScore(38, 23.0, { kind: 'cadet', sex: 'male', course: 1 })?.points).toBe(2);
+    expect(calculateExerciseScore(38, 20.5, { kind: 'cadet', sex: 'male', course: 1 })).toBeNull();
+    expect(calculateExerciseScore(38, 12.2, male)).toBeNull();
 
 
 
