@@ -20,7 +20,7 @@ describe('verified exercise technique cards',()=>{it('contains checked descripti
   expect(verifiedExerciseDetails[30].execution.join(' ')).toContain('два кувырка вперед');
   expect(verifiedExerciseDetails[31].rules.join(' ')).toContain('одной минуты');
   expect(verifiedExerciseDetails[32].rules.join(' ')).toContain('110–125 см');
-  expect(verifiedExerciseDetails[33].rules.join(' ')).toContain('курсанты');
+  expect(verifiedExerciseDetails[33].rules.join(' ')).toContain('курсантов');
   expect(verifiedExerciseDetails[34].execution.join(' ')).toContain('подъем разгибом');
   expect(verifiedExerciseDetails[35].rules.join(' ')).toContain('120–130 см');\n  expect(verifiedExerciseDetails[36].rules.join(' ')).toContain('15 × 28 м');\n  expect(verifiedExerciseDetails[37].rules.join(' ')).toContain('20 × 40 м');
 });it('links shuttle-run technique to its exact source page',()=>expect(verifiedExerciseDetails[19].sourceUrl).toContain('429f0ec0902cc8cc40226528c5d52d0e3e4f244d'));});
