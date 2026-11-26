@@ -111,7 +111,10 @@ describe('Нормативный калькулятор: подтверждён�
     expect(calculateExerciseScore(27, 2115, { ...male, age: 34 })?.points).toBe(2);
     expect(calculateExerciseScore(28, 540, { ...male, age: 34 })?.points).toBe(100);
     expect(calculateExerciseScore(28, 570, { ...male, age: 35 })?.points).toBe(100);
-    expect(calculateExerciseScore(28, 1075, { ...male, age: 35 })?.points).toBe(2);\n    expect(calculateExerciseScore(29, 400, { ...male, age: 34 })?.points).toBe(100);\n    expect(calculateExerciseScore(29, 360, { ...male, age: 35 })?.points).toBe(100);\n    expect(calculateExerciseScore(29, 217, { ...male, age: 34 })?.points).toBe(2);
+    expect(calculateExerciseScore(28, 1075, { ...male, age: 35 })?.points).toBe(2);
+    expect(calculateExerciseScore(29, 400, { ...male, age: 34 })?.points).toBe(100);
+    expect(calculateExerciseScore(29, 360, { ...male, age: 35 })?.points).toBe(100);
+    expect(calculateExerciseScore(29, 217, { ...male, age: 34 })?.points).toBe(2);
     expect(calculateExerciseScore(30, 9.0, male)?.points).toBe(100);
     expect(calculateExerciseScore(30, 18.6, male)?.points).toBe(2);
     expect(calculateExerciseScore(30, 18.7, male)).toBeNull();
