@@ -14,6 +14,6 @@ export const verifiedExerciseScores: Record<number, readonly (readonly [number,n
 
 // Exercise 13: exact time-to-points table, Appendix 5, consolidated edition 08.12.2025.
 // The official table advances in 5-second increments from 03:00 (100 points) to 10:45 (7 points).
-const exercise13: readonly (readonly [number, number])[] = Array.from({ length: 94 }, (_, index) => [180 + index * 5, 100 - index] as const);
+const exercise13: readonly (readonly [number, number])[] = Array.from({ length: 95 }, (_, index) => [180 + index * 5, 100 - index] as const);
 verifiedExerciseScores[13] = exercise13;
 export const scoringSource = 'Приложение № 5, таблицы перевода результата выполнения упражнений № 1–9 и № 13 в баллы; редакция приказа № 230 от 08.12.2025.';
