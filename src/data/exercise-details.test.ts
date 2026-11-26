@@ -17,7 +17,7 @@ describe('verified exercise technique cards',()=>{
   it('records special exercise conditions and equipment through 70',()=>{
     expect(verifiedExerciseDetails[59].rules.join(' ')).toContain('20 секунд');
     expect(verifiedExerciseDetails[60].execution.join(' ')).toContain('1000 м');
-    expect(verifiedExerciseDetails[61].rules.join(' ')).toContain('165 м');
+    expect(verifiedExerciseDetails[61].execution.join(' ')).toContain('165 м');
     expect(verifiedExerciseDetails[62].rules.join(' ')).toContain('20 оборотов');
     expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спираль');
     expect(verifiedExerciseDetails[64].execution.join(' ')).toContain('четыре серии');
@@ -85,7 +85,7 @@ describe('verified exercise technique cards',()=>{
   expect(verifiedExerciseDetails[61].rules.join(' ')).toContain('2 секунды');
   expect(verifiedExerciseDetails[62].rules.join(' ')).toContain('20 оборотов');
   expect(verifiedExerciseDetails[63].execution.join(' ')).toContain('спиралей');
-  expect(verifiedExerciseDetails[64].rules.join(' ')).toContain('четыре серии');
+  expect(verifiedExerciseDetails[64].execution.join(' ')).toContain('четыре серии');
   expect(verifiedExerciseDetails[65].rules.join(' ')).toContain('армейской авиации');
   expect(verifiedExerciseDetails[66].execution.join(' ')).toContain('прямых руках');
   expect(verifiedExerciseDetails[67].rules.join(' ')).toContain('коленями');
