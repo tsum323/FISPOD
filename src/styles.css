@@ -233,3 +233,12 @@ footer span{overflow-wrap:anywhere}
  .requirements-block summary{font-size:11px;min-height:44px}
  .requirements-exercises>div{font-size:10px;grid-template-columns:34px minmax(0,1fr)}
 }
+
+.requirements-hint{font-size:11px;line-height:1.55;color:var(--warn);margin-top:9px}
+@media(max-width:760px){
+ .calculator-layout{grid-template-columns:minmax(0,1fr)!important}
+ .calculator-fields{grid-template-columns:minmax(0,1fr)!important}
+ .requirements-blocks{grid-template-columns:minmax(0,1fr)!important}
+ .requirements-block>div:first-child{flex-wrap:wrap}
+ .requirements-block summary{min-height:44px}
+}
