@@ -38,4 +38,20 @@ describe('Требования к количеству и составу упр�
   expect(getExerciseRequirements({kind:'contract',sex:'male',age:17,category:1}).supported).toBe(false);
   expect(getExerciseRequirements({kind:'cadet',sex:'male'}).supported).toBe(false);
  });
+
+ it('обрабатывает IIIа, IIIб и инвалидность без назначения СФУ',()=>{
+  const early=getExerciseRequirements({kind:'contract',sex:'male',age:30,healthProfile:'IIIa'});
+  expect(early.total).toBe(3);
+  expect(early.blocks.map(x=>x.title)).toEqual(['Быстрота или ловкость','Сила','Выносливость']);
+  expect(early.blocks.every(x=>!x.special)).toBe(true);
+  const older=getExerciseRequirements({kind:'contract',sex:'male',age:50,healthProfile:'IIIb'});
+  expect(older.total).toBe(2);
+  const female=getExerciseRequirements({kind:'contract',sex:'female',age:45,healthProfile:'disability'});
+  expect(female.total).toBe(2);
+ });
+ it('не выдумывает состав упражнений для призывников',()=>{
+  const p=getExerciseRequirements({kind:'conscript',sex:'male',conscriptCount:4});
+  expect(p.total).toBe(4);
+  expect(p.blocks[0].groups).toEqual([]);
+ });
 });
