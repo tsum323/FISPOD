@@ -7,6 +7,7 @@ export type RequirementProfile = {
   category?: 1 | 2 | 3;
   course?: 1 | 2 | 3;
   conscriptCount?: 3 | 4;
+  healthProfile?: 'standard' | 'IIIa' | 'IIIb' | 'disability';
 };
 export type RequirementBlock = {
   title: string;
@@ -28,7 +29,7 @@ const block=(title:string,count:number,description:string,groups:ExerciseGroup[]
 export function getExerciseRequirements(p:RequirementProfile):ExerciseRequirements {
   if(p.kind==='conscript') {
     if(p.conscriptCount!==3&&p.conscriptCount!==4) return {supported:false,total:null,blocks:[],note:'Для военнослужащих по призыву количество — 3 или 4 упражнения в зависимости от подразделения. Уточни установленный для подразделения вариант.'};
-    return {supported:true,total:p.conscriptCount,blocks:[block('Комплект проверки',p.conscriptCount,'Приказ устанавливает 3 или 4 упражнения в зависимости от подразделения. Самостоятельно определить вариант только по категории службы нельзя.',['Сила','Быстрота','Выносливость','Ловкость','Ускоренное передвижение','Преодоление препятствий','Рукопашный бой','Метание','Военно-прикладное плавание','Специальные приёмы и действия'])],note:'Приказ не задаёт единый для всех призывников набор из 3 или 4 упражнений: решающим является подразделение, в котором проходит службу военнослужащий.'};
+    return {supported:true,total:p.conscriptCount,blocks:[block('Комплект по программе подразделения',p.conscriptCount,'Пункт 88 устанавливает только количество. Состав и конкретные упражнения берутся из программы подготовки и КПК вашего подразделения.',[])],note:'Для призывников нельзя автоматически назначить физические качества и упражнения только по пункту 88. Уточни утверждённый комплект в подразделении.'};
   }
   if(p.kind==='cadet') {
     if(p.course!==1&&p.course!==2&&p.course!==3)return {supported:false,total:null,blocks:[],note:'Укажи курс обучения.'};
@@ -42,6 +43,22 @@ export function getExerciseRequirements(p:RequirementProfile):ExerciseRequiremen
     ],note:'Второй и последующие курсы: всего 5 упражнений — 3 ОФУ и 2 СФУ.'};
   }
   if(!Number.isInteger(p.age)||p.age!<18)return {supported:false,total:null,blocks:[],note:'Укажи полный возраст на дату проверки.'};
+  if(p.healthProfile==='IIIa'||p.healthProfile==='IIIb'||p.healthProfile==='disability') {
+    const age=p.age!;
+    const group=p.sex==='male'?(age<25?1:age<30?2:age<35?3:age<40?4:age<45?5:age<50?6:age<55?7:age<60?8:9):(age<25?1:age<30?2:age<35?3:age<40?4:age<45?5:age<50?6:7);
+    const count=group<=(p.sex==='male'?6:5)?3:2;
+    const qualities=count===3?[
+      block('Быстрота или ловкость',1,'Одно ОФУ на быстроту или ловкость.',['Быстрота','Ловкость'],['Быстрота ИЛИ ловкость']),
+      block('Сила',1,'Одно ОФУ на силу.',['Сила']),
+      block('Выносливость',1,'Одно ОФУ на выносливость.',['Выносливость'])
+    ]:[
+      block('Одно качество на выбор',1,'Одно ОФУ на быстроту, ловкость или силу.',['Быстрота','Ловкость','Сила'],['Быстрота ИЛИ ловкость ИЛИ сила']),
+      block('Выносливость',1,'Одно ОФУ на выносливость.',['Выносливость'])
+    ];
+    const profileName=p.healthProfile==='disability'?'группа инвалидности':`III${p.healthProfile==='IIIa'?'а':'б'} группа здоровья`;
+    return {supported:true,total:count,blocks:qualities,note:`Для военнослужащего с профилем «${profileName}» пункт 88 предусматривает ${count} ОФУ с учётом возрастной группы. Допуск к проверке и индивидуальный КПК оформляются по пункту 107 с участием врача воинской части.`};
+  }
+
   const age=p.age!;
   if(p.sex==='male') {
     const group=age<25?1:age<30?2:age<35?3:age<40?4:age<45?5:age<50?6:age<55?7:age<60?8:9;
